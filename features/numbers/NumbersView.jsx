@@ -1,15 +1,18 @@
 import { useDispatch, useSelector } from "react-redux";
-import { addNumber } from "./numbersSlicer";
+import { addNumber, clear, sum, equal, subtract, product, divide } from "./numbersSlicer";
+import "./numbers.css";
 export const NumbersView = () => {
   const appState = useSelector((state) => state.numbers);
   const Dispatch = useDispatch();
   const handleClick = (e) => {
     e.preventDefault();
     switch (e.target.id) {
-      //   case "clear":
-      //     return this.props.clearResults();
+      case "clear":
+        Dispatch(clear());
+        break;
       case "one":
-        return Dispatch(addNumber(1));
+        Dispatch(addNumber(1));
+        break;
       case "two":
         return Dispatch(addNumber(2));
       case "three":
@@ -30,16 +33,16 @@ export const NumbersView = () => {
         return Dispatch(addNumber(0));
       case "decimal":
         return Dispatch(addNumber("."));
-      //   case "add":
-      //     return this.props.sumNumber();
-      //   case "subtract":
-      //     return this.props.subNumber();
-      //   case "multiply":
-      //     return this.props.prdNumber();
-      //   case "divide":
-      //     return this.props.divNumber();
-      //   case "equals":
-      //     return this.props.equalNumber();
+      case "add":
+        return Dispatch(sum());
+      case "subtract":
+        return Dispatch(subtract());
+      case "multiply":
+        return Dispatch(product());
+      case "divide":
+        return Dispatch(divide());
+      case "equals":
+        return Dispatch(equal());
       //   default:
       //     return "";
     }
@@ -54,9 +57,20 @@ export const NumbersView = () => {
   return (
     <>
       <div id="display" className="numbers">
-        {this.appState.result}
+        {appState.numbersOnScreen}
       </div>
       <div className="center">
+        <div id="firstRow" style={{ marginLeft: "43px" }}>
+          <button id="clear" style={{ paddingLeft: "14px" }} onClick={(e) => handleClick(e)}>
+            AC
+          </button>
+          <button id="divide" onClick={(e) => handleClick(e)}>
+            /
+          </button>
+          <button id="multiply" onClick={(e) => handleClick(e)}>
+            *
+          </button>
+        </div>
         <div>
           <button id="one" onClick={(e) => handleClick(e)}>
             1
@@ -66,6 +80,9 @@ export const NumbersView = () => {
           </button>
           <button id="three" onClick={(e) => handleClick(e)}>
             3
+          </button>
+          <button id="subtract" onClick={(e) => handleClick(e)}>
+            -
           </button>
         </div>
         <div>
@@ -78,6 +95,9 @@ export const NumbersView = () => {
           <button id="six" onClick={(e) => handleClick(e)}>
             6
           </button>
+          <button id="add" style={{ paddingRight: "12px" }} onClick={(e) => handleClick(e)}>
+            +
+          </button>
         </div>
         <div>
           <button id="seven" onClick={(e) => handleClick(e)}>
@@ -89,35 +109,27 @@ export const NumbersView = () => {
           <button id="nine" onClick={(e) => handleClick(e)}>
             9
           </button>
+          <button id="equals" style={{ paddingRight: "13px" }} onClick={(e) => handleClick(e)}>
+            =
+          </button>
         </div>
         <div>
           <button id="zero" onClick={(e) => handleClick(e)}>
             0
           </button>
+          <button id="decimal" onClick={(e) => handleClick(e)}>
+            .
+          </button>
         </div>
 
         {/* <div>
-            <button id="equals" onClick={(e) => this.handleClick(e)}>
-              =
-            </button>
-            <button id="add" onClick={(e) => this.handleClick(e)}>
-              +
-            </button>
-            <button id="subtract" onClick={(e) => this.handleClick(e)}>
-              -
-            </button>
-            <button id="multiply" onClick={(e) => this.handleClick(e)}>
-              *
-            </button>
-            <button id="divide" onClick={(e) => this.handleClick(e)}>
-              /
-            </button>
-            <button id="decimal" onClick={(e) => this.handleClick(e)}>
-              .
-            </button>
-            <button id="clear" onClick={(e) => this.handleClick(e)}>
-              AC
-            </button>
+        
+        
+         
+         
+           
+           
+         
           </div> */}
       </div>
     </>

@@ -1,0 +1,7 @@
+#display {
+  border-radius: 119px 119px 119px 119px;
+  -webkit-border-radius: 119px 119px 119px 119px;
+  -moz-border-radius: 119px 119px 119px 119px;
+  border: 2px dotted #19e8eb;
+  background-color: #04141a;
+}
