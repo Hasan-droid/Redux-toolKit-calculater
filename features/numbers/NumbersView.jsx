@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
-import { addNumber, clear, sum, equal, subtract, product, divide } from "./numbersSlicer";
+import { addNumber, clear } from "./numbersSlicer";
+import { divide, equal, product, subtract, sum } from "../opertators/opertatorsSlicer";
 import "./numbers.css";
 export const NumbersView = () => {
   const appState = useSelector((state) => state.numbers);
